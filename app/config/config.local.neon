@@ -2,6 +2,15 @@ parameters:
 
 
 database:
-	dsn: 'mysql:host=127.0.0.1;dbname=test'
-	user:
-	password:
+	dsn: 'mysql:host=127.0.0.1;dbname=dbname'
+	user: dbuser
+	password: 123
+	options:
+		lazy: yes
+
+doctrine:
+	user: dbuser
+	password: 123
+	dbname: dbname
+	metadata:
+		App: %appDir%/entities
