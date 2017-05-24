@@ -12,5 +12,3 @@ doctrine:
 	user: dbuser
 	password: 123
 	dbname: dbname
-#	metadata:
-#		App: %appDir%/entities

@@ -26,7 +26,7 @@ class Value
 
     /**
      * @var Sensor
-     * @ORM\ManyToOne(targetEntity=Sensor::class, inversedBy="values")
+     * @ORM\ManyToOne(targetEntity=Sensor::class, inversedBy="values", cascade={"persist"}))
      */
     protected $sensor;
 
@@ -34,6 +34,7 @@ class Value
     {
         $this->value = $value;
         $this->sensor = $sensor;
+        $this->datetime = new \DateTime();
     }
 
     public function getId(): int

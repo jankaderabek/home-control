@@ -27,7 +27,7 @@ class Sensor
 
     /**
      * @var Project
-     * @ORM\ManyToMany(targetEntity=Project::class, inversedBy="sensors")
+     * @ORM\ManyToOne(targetEntity=Project::class, inversedBy="sensors", cascade={"persist"}))
      */
     protected $project;
 
@@ -42,6 +42,7 @@ class Sensor
         $this->identifier = $identifier;
         $this->name = $name;
         $this->project = $project;
+        $this->values = new ArrayCollection();
     }
 
     public function getId(): int
