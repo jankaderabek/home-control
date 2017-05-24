@@ -26,5 +26,10 @@
 	"require-dev": {
 		"nette/tester": "^1.6"
 	},
+	"autoload": {
+		"psr-4": {
+			"App\\": "app"
+		}
+	},
 	"minimum-stability": "stable"
 }

@@ -12,7 +12,7 @@ session:
 
 
 services:
-	router: App\RouterFactory::createRouter
+	router: App\Router\RouterFactory::createRouter
 
 extensions:
 	console: Kdyby\Console\DI\ConsoleExtension
