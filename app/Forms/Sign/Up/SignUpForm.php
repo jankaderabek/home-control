@@ -61,7 +61,7 @@ class SignUpForm extends Control
             $user = $this->userFacade->createUser($values->email, $values->password);
         } catch (UserAlreadyExistsException $exception) {
             $form->addError('Uživatel se zadaným e-mail již existuje.');
-            //return;
+            return;
         }
 
         ($this->onFormSuccess)();
