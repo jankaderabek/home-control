@@ -25,7 +25,8 @@
 		"nextras/forms": "^2.0"
 	},
 	"require-dev": {
-		"nette/tester": "^1.6"
+		"nette/tester": "^1.6",
+		"codeception/codeception": "*"
 	},
 	"autoload": {
 		"psr-4": {
