@@ -13,9 +13,15 @@ session:
 
 services:
 	router: App\Router\RouterFactory::createRouter
+	- App\Model\UserAuthenticator
 
 extensions:
 	console: Kdyby\Console\DI\ConsoleExtension
 	events: Kdyby\Events\DI\EventsExtension
 	annotations: Kdyby\Annotations\DI\AnnotationsExtension
 	doctrine: Kdyby\Doctrine\DI\OrmExtension
+	nextras.form: Nextras\Forms\Bridges\NetteDI\FormsExtension
+
+includes:
+	- forms.neon
+	- services.neon
