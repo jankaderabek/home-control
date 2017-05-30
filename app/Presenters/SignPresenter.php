@@ -3,7 +3,7 @@
 namespace App\Presenters;
 
 use App\Forms\Sign\Up\ISignUpFormFactory;
-use App\Forms\User\ISignInFormFactory;
+use App\Forms\Sign\In\ISignInFormFactory;
 use Nette;
 
 

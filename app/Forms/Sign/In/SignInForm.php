@@ -1,6 +1,6 @@
 <?php declare(strict_types = 1);
 
-namespace App\Forms\User;
+namespace App\Forms\Sign\In;
 
 use Nette\Application\UI\Control;
 use Nette\Application\UI\Form;

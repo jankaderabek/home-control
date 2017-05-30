@@ -3,8 +3,8 @@
 namespace App\Presenters;
 
 use App\Entities\Project;
-use App\Forms\User\IProjectFormFactory;
-use App\Forms\User\ProjectForm;
+use App\Forms\Project\IProjectFormFactory;
+use App\Forms\Project\ProjectForm;
 use App\Repositories\ProjectRepository;
 use App\Services\ProjectService;
 use Nette\Http\IResponse;
