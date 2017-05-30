@@ -4,6 +4,7 @@ namespace Tests\Doctrine;
 
 use App\Entities\Project;
 use App\Entities\Sensor;
+use App\Entities\User;
 use App\Entities\Value;
 use Doctrine\ORM\EntityManager;
 use Nette\DI\Container;
@@ -38,7 +39,10 @@ class DoctrineBasicEntitiesTest extends TestCase
                 "Muj senzor",
                 new Project(
                     "fsgr",
-                    "Muj projekt"
+                    "Muj projekt",
+                    new User(
+                        'email',
+                        'password')
                 )
             )
         );

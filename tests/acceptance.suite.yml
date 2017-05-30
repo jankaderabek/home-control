@@ -10,3 +10,11 @@ modules:
         - PhpBrowser:
             url: http://localhost
         - \Helper\Acceptance
+        - Db:
+            dsn: 'mysql:host=127.0.0.1;dbname=dbname'
+            user: 'newuser'
+            password: 'password'
+            dump: 'tests/_data/dump.sql'
+            cleanup: true # run populator before each test
+            populate: true # run populator before all test
+            #populator: 'mysql -u $user $dbname < tests/_data/dump.sql'

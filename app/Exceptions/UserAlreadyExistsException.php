@@ -2,7 +2,6 @@
 
 namespace App\Exceptions;
 
-
 class UserAlreadyExistsException extends \RuntimeException
 {
     public function __construct(string $email)

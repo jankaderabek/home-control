@@ -5,7 +5,7 @@ class UserAuthenticationCest
 {
     public function tryToSignUpAndSignIn(AcceptanceTester $I)
     {
-        $I->amOnPage('sign/up');
+        $I->amOnPage('/sign/up');
         $I->amGoingTo('Crete new account');
 
         $I->fillField('E-mail', 'test@email.cz');
@@ -26,7 +26,17 @@ class UserAuthenticationCest
 
     public function tryToSignUpWithExistingMail(AcceptanceTester $I)
     {
-        $I->amOnPage('sign/up');
+        $I->amOnPage('/sign/up');
+        $I->amGoingTo('Crete new account');
+
+        $I->fillField('E-mail', 'test@email.cz');
+        $I->fillField('Password', 'Heslo123');
+        $I->fillField('Password2', 'Heslo123');
+        $I->click('send');
+
+        $I->canSeeInCurrentUrl('/sign/in');
+
+        $I->amOnPage('/sign/up');
         $I->amGoingTo('Crete new account');
 
         $I->fillField('E-mail', 'test@email.cz');

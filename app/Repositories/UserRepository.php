@@ -34,4 +34,9 @@ class UserRepository
     {
         return $this->entityRepository->findOneBy(['email' => $email]);
     }
+
+    public function findById(int $id): ?User
+    {
+        return $this->entityRepository->findOneBy(['id' => $id]);
+    }
 }

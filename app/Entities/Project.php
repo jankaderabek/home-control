@@ -26,15 +26,22 @@ class Project
     protected $name;
 
     /**
+     * @var User
+     * @ORM\ManyToOne(targetEntity=User::class, cascade={"persist"})
+     */
+    protected $user;
+
+    /**
      * @var Sensor[]
      * @ORM\OneToMany(targetEntity=Sensor::class, mappedBy="project")
      */
     protected $sensors;
 
-    public function __construct($token, $name)
+    public function __construct(string $token, string $name, User $user)
     {
         $this->token = $token;
         $this->name = $name;
+        $this->user = $user;
     }
 
     public function getId(): int
@@ -52,11 +59,21 @@ class Project
         return $this->name;
     }
 
+    public function setName(string $name)
+    {
+        $this->name = $name;
+    }
+
     /**
      * @return Sensor[]|ArrayCollection
      */
     public function getSensors(): ArrayCollection
     {
         return $this->sensors;
+    }
+
+    public function getUser(): User
+    {
+        return $this->user;
     }
 }

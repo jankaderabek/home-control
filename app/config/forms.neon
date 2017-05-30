@@ -1,3 +1,4 @@
 services:
 	- App\Forms\User\ISignInFormFactory
 	- App\Forms\Sign\Up\ISignUpFormFactory
+	- App\Forms\User\IProjectFormFactory
