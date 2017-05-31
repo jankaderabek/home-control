@@ -4,9 +4,11 @@ php:
 
 script:
     - make tests
+    - make acceptance-travis
 
 before_script:
     - travis_retry composer install --no-interaction --prefer-dist
+    - nohup php -S localhost:8000 -t www > phpd.log 2>&1 &
 
 sudo: false
 

@@ -17,4 +17,10 @@ modules:
             dump: 'tests/_data/dump.sql'
             cleanup: true # run populator before each test
             populate: true # run populator before all test
-            #populator: 'mysql -u $user $dbname < tests/_data/dump.sql'
+
+env:
+    travis:
+         modules:
+            config:
+                PhpBrowser:
+                    url: http://localhost:8000
