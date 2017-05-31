@@ -4,19 +4,9 @@ require __DIR__ . '/../vendor/autoload.php';
 
 Tester\Environment::setup();
 
-$configurator = new Nette\Configurator;
-$configurator->setDebugMode(FALSE);
-$configurator->setTempDirectory(__DIR__ . '/temp');
+define('TEST_DIR', __DIR__);
+define('ROOT_DIR', realpath(__DIR__ . "/.."));
+define('APP_DIR', ROOT_DIR . "/app");
+define('TEMP_DIR', TEST_DIR . "/temp/" . getmypid());
 
-$configurator->createRobotLoader()
-    ->addDirectory(__DIR__ . '/../app')
-    ->register();
-
-$configurator->addConfig(__DIR__ . '/../app/config/config.neon');
-$configurator->addConfig(__DIR__ . '/../app/config/config.local.neon');
-
-$configurator->addParameters([
-    'appDir' => __DIR__ . '/../app',
-]);
-
-return $configurator->createContainer();
+Tester\Helpers::purge(TEMP_DIR);

@@ -1,13 +1,15 @@
 .PHONY: tests clear
 
-tests: clear
+tests: create-schema
 	vendor/bin/tester tests/ -p php -c tests/php.ini
 
-acceptance: codecept.phar
-	php www/index.php orm:schema-tool:create --dump-sql > tests/_data/dump_create.sql
+acceptance: codecept.phar create-schema
 	cat tests/_data/dump_create.sql > tests/_data/dump.sql
 	cat tests/_data/dump_data.sql >> tests/_data/dump.sql
 	php codecept.phar run --steps
+
+create-schema:
+	php www/index.php orm:schema-tool:create --dump-sql > tests/_data/dump_create.sql
 
 codecept.phar:
 	wget http://codeception.com/codecept.phar

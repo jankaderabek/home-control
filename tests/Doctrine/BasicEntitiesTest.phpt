@@ -7,28 +7,17 @@ use App\Entities\Sensor;
 use App\Entities\User;
 use App\Entities\Value;
 use Doctrine\ORM\EntityManager;
-use Nette\DI\Container;
 use Tester\Assert;
-use Tester\TestCase;
+use Tests\Integration\IntegrationTestCase;
 
-$container = require_once __DIR__ . '/../bootstrap.php';
+require_once __DIR__ . '/../bootstrap.php';
 
-class DoctrineBasicEntitiesTest extends TestCase
+class DoctrineBasicEntitiesTest extends IntegrationTestCase
 {
-    /**
-     * @var Container
-     */
-    private $container;
-
-    public function __construct(Container $container)
-    {
-        $this->container = $container;
-    }
-
     public function testEntities()
     {
         /** @var EntityManager $entityManager */
-        $entityManager = $this->container->getByType(EntityManager::class);
+        $entityManager = $this->getContainer()->getByType(EntityManager::class);
         Assert::true($entityManager instanceof EntityManager);
         Assert::true(true);
 
@@ -61,4 +50,4 @@ class DoctrineBasicEntitiesTest extends TestCase
     }
 }
 
-(new DoctrineBasicEntitiesTest($container))->run();
+(new DoctrineBasicEntitiesTest())->run();
