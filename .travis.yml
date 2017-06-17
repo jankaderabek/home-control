@@ -1,0 +1,26 @@
+language: php
+php:
+    - 7.1
+
+script:
+    - make tests
+    - make acceptance-travis
+
+before_script:
+    - travis_retry composer install --no-interaction --prefer-dist
+    - nohup php -S localhost:8000 -t www > phpd.log 2>&1 &
+
+sudo: false
+
+cache:
+    directories:
+        - $HOME/.composer/cache
+
+services:
+    - mysql
+
+before_install:
+    - mysql -u root -e 'CREATE DATABASE IF NOT EXISTS dbname;'
+    - mysql -u root -e "CREATE USER 'newuser'@'localhost' IDENTIFIED BY 'newuser';"
+    - mysql -u root -e "SET PASSWORD FOR 'newuser'@'localhost' = PASSWORD('password');"
+    - mysql -u root -e "GRANT ALL ON *.* TO 'newuser'@'localhost';"
