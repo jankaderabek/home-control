@@ -23,10 +23,9 @@ extensions:
 	nextras.form: Nextras\Forms\Bridges\NetteDI\FormsExtension
 
 doctrine:
-	host: docker.for.mac.localhost
-	user: newuser
-	password: password
-	dbname: dbname
+	host: database
+	user: root
+	dbname: home
 
 includes:
 	- forms.neon

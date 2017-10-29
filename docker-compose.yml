@@ -2,29 +2,36 @@ version: '3'
 
 services:
     web:
-#        image: php:7.1-apache
         build: ./docker/php-fpm
         ports:
           - 8000:80
         volumes:
-         - ./:/var/www/html
-#    nginx:
-#        image: nginx:alpine
-#        ports:
-#          - 80
-#        volumes:
-#          - ./:/var/www/html
-#          - ./docker/nginx/nginx.conf:/etc/nginx/conf.d/default.conf
-#        links:
-#          - php-fpm
-#        restart: on-failure
-#        environment:
-#          VIRTUAL_HOST: home.localhost
-#
-#    php-fpm:
-#        build: ./docker/php-fpm
-#        volumes:
-#          - ./:/var/www/html
-#        expose:
-#          - 9000
-#        restart: on-failure
+            - ./:/var/www/html
+
+    composer:
+         build: ./docker/php-fpm
+         entrypoint: composer
+         command: install --no-dev
+         volumes:
+            - ./:/var/www/html
+
+    database:
+        image: mariadb:latest
+        volumes:
+          - database:/var/lib/mysql
+
+        environment:
+            MYSQL_ALLOW_EMPTY_PASSWORD: 1
+            MYSQL_USER: root
+            MYSQL_PASSWORD: root
+            MYSQL_DATABASE: home
+
+    adminer:
+        image: adminer:latest
+        ports:
+            - 8090:80
+        links:
+            - database:db
+
+volumes:
+    database:

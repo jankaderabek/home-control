@@ -1,17 +1,1 @@
 parameters:
-
-
-database:
-	dsn: 'mysql:host=127.0.0.1;dbname=dbname'
-	user: newuser
-	password: password
-	options:
-		lazy: yes
-
-doctrine:
-	host: 172.17.0.1
-	user: newuser
-	password: password
-	dbname: dbname
-#	metadata:
-#		App: %appDir%/entities
