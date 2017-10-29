@@ -3,6 +3,9 @@
 tests: create-schema
 	vendor/bin/tester tests/ -p php -c tests/php.ini
 
+unit-tests:
+	vendor/bin/tester tests/Tests/Unit -p php -c tests/php.ini
+
 acceptance: codecept.phar create-schema prepare-dumps
 	php codecept.phar run --steps
 

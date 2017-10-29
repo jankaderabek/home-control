@@ -42,7 +42,14 @@ class ProjectPresenter extends SecuredPresenter
         $this->projectService = $projectService;
     }
 
-    public function renderDetail($id)
+    public function renderDefault(): void
+    {
+        $projects = $this->projectRepository->findAllUserProjects($this->getApplicationUser());
+
+        $this->getTemplate()->add('projects', $projects);
+    }
+
+    public function renderDetail($id): void
     {
         $project = $this->projectRepository->findById((int)$id);
 
@@ -57,7 +64,7 @@ class ProjectPresenter extends SecuredPresenter
         $this->getTemplate()->add('project', $project);
     }
 
-    public function actionEdit($id)
+    public function actionEdit($id): void
     {
         $this->editingProject = $this->projectRepository->findById((int)$id);
 

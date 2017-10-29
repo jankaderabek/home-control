@@ -1,9 +1,14 @@
 services:
 	- App\Repositories\UserRepository
 	- App\Repositories\ProjectRepository
+	- App\Repositories\SensorRepository
 
 	- App\Facades\UserFacade
 	- App\Facades\ProjectFacade
+	- App\Facades\SensorFacade
 
 	- App\Services\ProjectTokenService
 	- App\Services\ProjectService
+
+	- App\Model\SensorTokenGenerator
+	- App\Services\SensorService

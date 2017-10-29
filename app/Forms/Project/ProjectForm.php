@@ -57,6 +57,13 @@ class ProjectForm extends BaseForm
 
         $form->onSuccess[] = [$this, 'onSuccess'];
 
+        if ($this->project) {
+            $form->setDefaults([
+                'id' => $this->project->getId(),
+                'name' => $this->project->getName(),
+            ]);
+        }
+
         return $form;
     }
 
@@ -81,8 +88,8 @@ class ProjectForm extends BaseForm
 
     private function processForm(Form $form, $values): ?Project
     {
-        if (!empty($values->id)) {
-            return $this->projectFacade->editProject((int)$values->id, $values->name);
+        if ( ! empty($values->id)) {
+            return $this->projectFacade->editProject((int) $values->id, $values->name);
         }
 
         try {

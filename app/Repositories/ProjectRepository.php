@@ -3,6 +3,8 @@
 namespace App\Repositories;
 
 use App\Entities\Project;
+use App\Entities\User;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\EntityManager;
 use Kdyby\Doctrine\EntityRepository;
 
@@ -28,5 +30,10 @@ class ProjectRepository
     public function findById(int $id): ?Project
     {
         return $this->entityRepository->findOneBy(['id' => $id]);
+    }
+
+    public function findAllUserProjects(User $user ): array
+    {
+        return $this->entityRepository->findBy(['user' => $user]);
     }
 }

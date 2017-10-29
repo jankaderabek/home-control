@@ -1,0 +1,30 @@
+version: '3'
+
+services:
+    web:
+#        image: php:7.1-apache
+        build: ./docker/php-fpm
+        ports:
+          - 8000:80
+        volumes:
+         - ./:/var/www/html
+#    nginx:
+#        image: nginx:alpine
+#        ports:
+#          - 80
+#        volumes:
+#          - ./:/var/www/html
+#          - ./docker/nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+#        links:
+#          - php-fpm
+#        restart: on-failure
+#        environment:
+#          VIRTUAL_HOST: home.localhost
+#
+#    php-fpm:
+#        build: ./docker/php-fpm
+#        volumes:
+#          - ./:/var/www/html
+#        expose:
+#          - 9000
+#        restart: on-failure

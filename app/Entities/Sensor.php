@@ -37,7 +37,7 @@ class Sensor
      */
     protected $values;
 
-    public function __construct($identifier, $name, Project $project)
+    public function __construct(string $identifier, string $name, Project $project)
     {
         $this->identifier = $identifier;
         $this->name = $name;

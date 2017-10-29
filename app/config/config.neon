@@ -22,6 +22,12 @@ extensions:
 	doctrine: Kdyby\Doctrine\DI\OrmExtension
 	nextras.form: Nextras\Forms\Bridges\NetteDI\FormsExtension
 
+doctrine:
+	host: docker.for.mac.localhost
+	user: newuser
+	password: password
+	dbname: dbname
+
 includes:
 	- forms.neon
 	- services.neon
