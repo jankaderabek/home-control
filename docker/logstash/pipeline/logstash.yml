@@ -1,0 +1,15 @@
+input {
+    file {
+        path => "/var/www/html/log/error.log"
+        type => "error"  # a type to identify those logs (will need this later)
+        tags => "www1"
+        start_position => "beginning"
+    }
+}
+output {
+   elasticsearch {
+      index => "testlogs"
+      hosts => ["elasticsearch:9200"]
+   }
+   stdout { }
+}

@@ -1,0 +1,9 @@
+input {
+    elasticsearch {
+          index => "testlogs"
+          hosts => ["elasticsearch:9200"]
+       }
+}
+output {
+   stdout { }
+}
